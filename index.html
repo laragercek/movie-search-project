@@ -7,6 +7,29 @@
     <link rel="stylesheet" href="styles.css"> 
 </head>
 <body>
+    <header>
+        <h1>Movie Search App</h1>
+        <div id="search-area">
+            <input type="text" id="search-input" placeholder="Search movies..." />
+            <button id="search-button">Search</button>
+        </div>
+    
+        <div id="filters">
+            <select id="genre-select">
+                <option value="">Select Genre</option>
+                <!-- genre options -->
+            </select>
+            <input type="number" id="year-input" placeholder="Year of Release" />
+        </div>
+    </header>
+    <main>
+        <section id="movies-container">
+            <!-- movie results -->
+        </section>
+    </main>
+    <div id="movie-details-modal" class="modal">
+    
+    </div>
     <script src="script.js"></script> 
 </body>
 </html>
