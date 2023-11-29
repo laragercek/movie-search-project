@@ -17,9 +17,11 @@ body {
     background: linear-gradient(to top, #2DA7B5, #FFFCFC); */
     /* background: linear-gradient(to left,white, #1cceee); */
     /* background-color: #FBAB7E; */
-    background-image: linear-gradient(to right, #FBAB7E 0%, #f7de9d 100%);
+    /* background-image: linear-gradient(to right, #FBAB7E 0%, #f7de9d 100%); */
 
-    font-family: 'Lato', sans-serif;
+    /* font-family: 'Lato', sans-serif; */
+    font-family: 'Hedvig Letters Serif', serif;
+    background: linear-gradient(180deg, rgba(255,255,255,0) 30%, rgba(20, 162, 244, 0.809) 100%);
 }
 
 header {
@@ -42,8 +44,12 @@ input, button {
     outline: none;
     border: none;
     border-radius: 0;
-    vertical-align: top;
+    vertical-align: top
 
+}
+
+main {
+    min-height: 100vh;
 }
 
 
@@ -109,7 +115,7 @@ input, button {
 }
 
 @media screen and (max-width: 600px) {
-    #search-input, #year-input, #genre-select, #search-button {
+    #search-input, #genre-select, #search-button {
         width: 100%;
         margin: 10px 0;
     }
