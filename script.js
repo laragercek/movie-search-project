@@ -31,7 +31,10 @@ function displayMovies(movies) {
             movieElement.classList.add('movie');
 
             const posterUrl = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
-            movieElement.innerHTML = `<img src="${posterUrl}" alt="${movie.title} Poster">`;
+            movieElement.innerHTML = `
+                <img src="${posterUrl}" alt="${movie.title} Poster">
+                <h3>${movie.title}</h3> <!-- Movie title -->
+                `;
 
             movieElement.addEventListener('click', function() {
                 displayMovieSynopsis(movie);
