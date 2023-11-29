@@ -1,7 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:100,300,400');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    
+}
+
+body {
+    /* background: #73C8A9;
+    background: -webkit-linear-gradient(to right, #373B44, #73C8A9); 
+    background: linear-gradient(to right, #373B44, #73C8A9);  */
+    /* background: #2DA7B5; */
+    /* background: -webkit-linear-gradient(to top, #2DA7B5 , #FFFCFC);
+    background: -moz-linear-gradient(to top, #2DA7B5, #FFFCFC);
+    background: linear-gradient(to top, #2DA7B5, #FFFCFC); */
+    /* background: linear-gradient(to left,white, #1cceee); */
+    /* background-color: #FBAB7E; */
+    background-image: linear-gradient(to right, #FBAB7E 0%, #f7de9d 100%);
+
+    font-family: 'Lato', sans-serif;
 }
 
 header {
@@ -11,38 +29,66 @@ header {
 }
 
 header h1 {
-    color: rgb(195, 46, 46);
+    color: #FBAB7E;
     text-align: center;
     font-size: 4rem;
-    font-family: 'Lato', sans-serif;
     font-weight: 200;
-    margin-bottom: 3%;
+    margin-bottom: 20px;
 }
+
+input, button {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    border-radius: 0;
+    vertical-align: top;
+
+}
+
 
 #search-area, #filters {
     margin-bottom: 20px;
 }
 
-#search-input, #year-input, #genre-select {
-    padding: 10px;
-    margin-right: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+#search-input, #genre-select {
+    border: none;
+    height: 70px;
+    width: 400px;
+    /* padding-left: 40px; */
+    border-radius: 35px 0 0 35px;
+    color: rgb(110,110,110);
+    font-size: 1.6rem;
+    font-family: 'Lato', sans-serif;
+    font-weight: 200;
+    text-align: center;
+    background-color:#f7de9d;
 }
 
 #search-button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
+    text-align: center;
     border: none;
-    border-radius: 4px;
-    cursor: pointer;
+    height: 70px;
+    width: 70px;
+    background: #f7de9d;
+    border-radius: 0 35px 35px 0;
+    color: rgb(170, 170, 170);
+    font-size: 1.4rem;
 }
 
 #search-button:hover {
-    background-color: #0056b3;
+    background-color: #3c3e41;
 }
 
+#genre-select {
+    height: 70px;
+    width: 250px; 
+    border-radius: 35px;
+    padding-left: 15px;
+    font-size: 1.4rem;
+    background: white;
+    color: rgb(110, 110, 110);
+}
 
 #movies-container {
     display: grid;
@@ -52,8 +98,6 @@ header h1 {
 }
 
 #movies-container div {
-    border: 1px solid #ddd;
-    border-radius: 4px;
     padding: 10px;
     text-align: center;
 }
@@ -61,7 +105,7 @@ header h1 {
 #movies-container img {
     max-width: 100%;
     height: auto;
-    border-radius: 4px;
+    border-radius: 15px;
 }
 
 @media screen and (max-width: 600px) {
@@ -92,12 +136,28 @@ header h1 {
     height: 100%;
     overflow: auto;
     background-color: rgba(0,0,0,0.4);
+    justify-content: center;
+    align-items: center;
 }
 
-.modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
+.movie-details-content {
+    display: flex;
+    align-items: center; /* Align items vertically */
+    justify-content: center; /* Center items horizontally */
+    background-color: #fff;
+    margin: auto;
     padding: 20px;
-    border: 1px solid #888;
-    width: 70%;
+    border-radius: 10px;
+    width: 80%; /* Adjust as needed */
 }
+
+#movie-poster {
+    max-width: 40%; /* Adjust size as needed */
+    margin-right: 20px; /* Spacing between poster and synopsis */
+}
+
+.movie-synopsis {
+    max-width: 60%; /* Adjust as needed */
+    text-align: left; /* Align text to the left */
+}
+
