@@ -6,21 +6,21 @@ const options = {
     }
   };
     
-    document.getElementById('search-button').addEventListener('click', function() {
-        var searchTerm = document.getElementById('search-input').value;
-        if (searchTerm) {
-            searchMovies(searchTerm);
-        }
-    });
-    
-    function searchMovies(searchTerm) {
-        fetch('https://api.themoviedb.org/3/search/movie?query=' + encodeURIComponent(searchTerm), options)
-            .then(response => response.json())
-            .then(data => displayMovies(data.results))
-            .catch(err => console.error(err));
+document.getElementById('search-button').addEventListener('click', function() {
+    var searchTerm = document.getElementById('search-input').value;
+    if (searchTerm) {
+        searchMovies(searchTerm);
     }
+});
+    
+function searchMovies(searchTerm) {
+    fetch('https://api.themoviedb.org/3/search/movie?query=' + encodeURIComponent(searchTerm), options)
+        .then(response => response.json())
+        .then(data => displayMovies(data.results))
+        .catch(err => console.error(err));
+}
 
-   function displayMovies(movies) {
+function displayMovies(movies) {
     const container = document.getElementById('movies-container');
     container.innerHTML = ''; // Clear previous results
 
@@ -39,29 +39,29 @@ const options = {
 
             container.appendChild(movieElement);
         }
-    });
+});
 }
     
-    function displayMovieSynopsis(movie) {
-        document.getElementById('movie-poster').src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
-        const modalContent = `
-            <h2>${movie.title}</h2>
-            <p>${movie.overview}</p>
-        `;
-        document.querySelector('.movie-synopsis').innerHTML = modalContent;
-        document.getElementById('movie-details-modal').style.display = 'flex';
-    }
+function displayMovieSynopsis(movie) {
+    document.getElementById('movie-poster').src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+    const modalContent = `
+        <h2>${movie.title}</h2>
+        <p>${movie.overview}</p>
+    `;
+    document.querySelector('.movie-synopsis').innerHTML = modalContent;
+    document.getElementById('movie-details-modal').style.display = 'flex';
+}
 
-    function closeModal(event) {
-        // Only close if user clicks modal background or the close button
-        if (event.target === this || event.target.id === 'close-modal') {
-            document.getElementById('movie-details-modal').style.display = 'none';
-        }
+function closeModal(event) {
+    // Only close if user clicks modal background or the close button
+    if (event.target === this || event.target.id === 'close-modal') {
+         document.getElementById('movie-details-modal').style.display = 'none';
     }
-    
-    // Attach the closeModal function to the modal and close button
-    document.getElementById('movie-details-modal').addEventListener('click', closeModal);
-    document.getElementById('close-modal').addEventListener('click', closeModal);
+}
+
+// Attach the closeModal function to the modal and close button
+document.getElementById('movie-details-modal').addEventListener('click', closeModal);
+document.getElementById('close-modal').addEventListener('click', closeModal);
     
  
     
