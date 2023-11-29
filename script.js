@@ -22,31 +22,49 @@ const options = {
 
    function displayMovies(movies) {
     const container = document.getElementById('movies-container');
-    container.innerHTML = '';
+    container.innerHTML = ''; // Clear previous results
 
     movies.forEach(movie => {
-        const movieElement = document.createElement('div');
-        movieElement.classList.add('movie');
-        const posterUrl = movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : 'path_to_default_poster_image';
+        // Check if the movie has a poster
+        if (movie.poster_path) {
+            const movieElement = document.createElement('div');
+            movieElement.classList.add('movie');
 
-        movieElement.innerHTML = `<img src="${posterUrl}" alt="${movie.title} Poster">`;
+            const posterUrl = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+            movieElement.innerHTML = `<img src="${posterUrl}" alt="${movie.title} Poster">`;
 
-        movieElement.addEventListener('click', function() {
-            displayMovieSynopsis(movie);
-        });
+            movieElement.addEventListener('click', function() {
+                displayMovieSynopsis(movie);
+            });
 
-        container.appendChild(movieElement);
+            container.appendChild(movieElement);
+        }
     });
 }
     
     function displayMovieSynopsis(movie) {
+        document.getElementById('movie-poster').src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
         const modalContent = `
             <h2>${movie.title}</h2>
             <p>${movie.overview}</p>
         `;
-        document.getElementById('movie-details-modal').innerHTML = modalContent;
-        document.getElementById('movie-details-modal').style.display = 'block';
+        document.querySelector('.movie-synopsis').innerHTML = modalContent;
+        document.getElementById('movie-details-modal').style.display = 'flex';
+    }
+
+    function closeModal(event) {
+        // Only close if user clicks modal background or the close button
+        if (event.target === this || event.target.id === 'close-modal') {
+            document.getElementById('movie-details-modal').style.display = 'none';
+        }
     }
     
+    // Attach the closeModal function to the modal and close button
+    document.getElementById('movie-details-modal').addEventListener('click', closeModal);
+    document.getElementById('close-modal').addEventListener('click', closeModal);
+    
+ 
+    
+
     
  
