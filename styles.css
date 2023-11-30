@@ -8,30 +8,27 @@
 }
 
 body {
-    /* background: #73C8A9;
-    background: -webkit-linear-gradient(to right, #373B44, #73C8A9); 
-    background: linear-gradient(to right, #373B44, #73C8A9);  */
-    /* background: #2DA7B5; */
-    /* background: -webkit-linear-gradient(to top, #2DA7B5 , #FFFCFC);
-    background: -moz-linear-gradient(to top, #2DA7B5, #FFFCFC);
-    background: linear-gradient(to top, #2DA7B5, #FFFCFC); */
+   
+    background: linear-gradient(to top, #2DA7B5, #FFFCFC);
     /* background: linear-gradient(to left,white, #1cceee); */
     /* background-color: #FBAB7E; */
     /* background-image: linear-gradient(to right, #FBAB7E 0%, #f7de9d 100%); */
 
     /* font-family: 'Lato', sans-serif; */
     font-family: 'Hedvig Letters Serif', serif;
-    background: linear-gradient(180deg, rgba(255,255,255,0) 30%, rgba(20, 162, 244, 0.809) 100%);
+    /* background: linear-gradient(180deg, rgba(255,255,255,0) 30%, rgba(20, 162, 244, 0.6) 70%); */
 }
 
 header {
-    background-color: #ffffff;
-    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
     text-align: center;
+    align-items: center;
 }
 
 header h1 {
-    color: #FBAB7E;
+    color: rgba(20, 162, 244, 0.809);
     text-align: center;
     font-size: 4rem;
     font-weight: 200;
@@ -44,7 +41,7 @@ input, button {
     outline: none;
     border: none;
     border-radius: 0;
-    vertical-align: top
+    vertical-align: top;
 
 }
 
@@ -53,37 +50,45 @@ main {
 }
 
 
-#search-area, #filters {
-    margin-bottom: 20px;
+#search-area    {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: 400px;
+    
 }
 
 #search-input, #genre-select {
     border: none;
+    outline: none;
     height: 70px;
     width: 400px;
     /* padding-left: 40px; */
-    border-radius: 35px 0 0 35px;
-    color: rgb(110,110,110);
+    border-radius: 35px;
+    color: rgb(255, 255, 255);
     font-size: 1.6rem;
     font-family: 'Lato', sans-serif;
     font-weight: 200;
     text-align: center;
-    background-color:#f7de9d;
+    background-color:rgb(159, 203, 245);
 }
 
 #search-button {
+    position: absolute;
+    top: 0;
+    right: 0;
     text-align: center;
     border: none;
     height: 70px;
     width: 70px;
-    background: #f7de9d;
+    background: rgb(159, 203, 245);
     border-radius: 0 35px 35px 0;
-    color: rgb(170, 170, 170);
+    color: rgb(255, 255, 255);
     font-size: 1.4rem;
 }
 
 #search-button:hover {
-    background-color: #3c3e41;
+    background-color: rgb(20, 162, 244);
 }
 
 #genre-select {
@@ -170,7 +175,7 @@ main {
 
 #movie-poster {
     max-width: 50%;
-    margin-right: 70px; 
+    margin-right: 80px; 
 }
 
 .movie-synopsis {
