@@ -14,10 +14,36 @@ document.getElementById('search-button').addEventListener('click', function() {
 });
     
 function searchMovies(searchTerm) {
-    fetch('https://api.themoviedb.org/3/search/movie?query=' + encodeURIComponent(searchTerm), options)
+    const selectedGenre = document.getElementById('genre-select').value;
+    const apiKey = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlZDdiZTg5YmIwYjhhMzEwYmJjZGU0YzM5MzI5ZDdiYSIsInN1YiI6IjY1NWZiYTA0NzA2ZTU2MDBjNGI5YzQzNCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.kqlqQtSY79qVcVs4OD7Uib1trcNRp-SYr8FNkWGRr9w';
+    let url = '';
+    if (selectedGenre) {
+        url = `https://api.themoviedb.org/3/discover/movie?with_genres=${selectedGenre}&api_key=${apiKey}`;
+    } else {
+        url = `https://api.themoviedb.org/3/search/movie?query=${encodeURIComponent(searchTerm)}&api_key=${apiKey}`;
+    }
+
+    fetch(url, options)
         .then(response => response.json())
         .then(data => displayMovies(data.results))
         .catch(err => console.error(err));
+}
+
+function fetchGenres() {
+    fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlZDdiZTg5YmIwYjhhMzEwYmJjZGU0YzM5MzI5ZDdiYSIsInN1YiI6IjY1NWZiYTA0NzA2ZTU2MDBjNGI5YzQzNCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.kqlqQtSY79qVcVs4OD7Uib1trcNRp-SYr8FNkWGRr9w', options)
+        .then(response => response.json())
+        .then(data => populateGenreDropdown(data.genres))
+        .catch(err => console.error(err));
+}
+
+function populateGenreDropdown(genres) {
+    const select = document.getElementById('genre-select');
+    genres.forEach(genre => {
+        const option = document.createElement('option');
+        option.value = genre.id;
+        option.textContent = genre.name;
+        select.appendChild(option);
+    });
 }
 
 function displayMovies(movies) {
@@ -61,7 +87,13 @@ function closeModal(event) {
          document.getElementById('movie-details-modal').style.display = 'none';
     }
 }
+document.addEventListener('DOMContentLoaded', function() {
+    fetchGenres();
+});
 
+document.getElementById('genre-select').addEventListener('change', function() {
+    searchMovies(document.getElementById('search-input').value);
+});
 // Attach the closeModal function to the modal and close button
 document.getElementById('movie-details-modal').addEventListener('click', closeModal);
 document.getElementById('close-modal').addEventListener('click', closeModal);
