@@ -16,14 +16,7 @@ document.getElementById('search-button').addEventListener('click', function() {
 function searchMovies(searchTerm) {
     const selectedGenre = document.getElementById('genre-select').value;
     const apiKey = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlZDdiZTg5YmIwYjhhMzEwYmJjZGU0YzM5MzI5ZDdiYSIsInN1YiI6IjY1NWZiYTA0NzA2ZTU2MDBjNGI5YzQzNCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.kqlqQtSY79qVcVs4OD7Uib1trcNRp-SYr8FNkWGRr9w';
-    let url = '';
-    if (selectedGenre) {
-        url = `https://api.themoviedb.org/3/discover/movie?with_genres=${selectedGenre}&api_key=${apiKey}`;
-    } else {
-        url = `https://api.themoviedb.org/3/search/movie?query=${encodeURIComponent(searchTerm)}&api_key=${apiKey}`;
-    }
-
-    fetch(url, options)
+    fetch('https://api.themoviedb.org/3/search/movie?query=' + encodeURIComponent(searchTerm), options)
         .then(response => response.json())
         .then(data => displayMovies(data.results))
         .catch(err => console.error(err));
